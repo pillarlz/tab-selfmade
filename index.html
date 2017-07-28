@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>jquerytab选项卡</title>
+	<script src="jquery-3.2.1.min.js"></script>
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin:0;
+		}
+		ul,li,ol{
+			list-style: none;
+		}
+		a{
+			text-decoration: none;
+		}
+		.tab{
+			width:600px;
+			margin: 100px;
+			border: 1px blue solid;
+		}
+		.tab_title{
+			width: 100%;
+			height: 50px;
+		}
+		.tab_title li{
+			width: 33%;
+			height: 50px;
+			float: left;
+			text-align: center;
+			line-height: 50px;
+			border: 1px black solid;
+			background: #084759;
+		}
+		.tab_title li.tab_adv{
+			background: yellow;
+		}
+		.tab_content{
+			width: 100%;
+			height: 200px;
+		}
+		.tab_content div{
+			width: 100%;
+			height: 200px;
+			display: none;
+			background: yellow;
+		}
+		.tab_content div.tab_on{
+			display: block;
+		}
+	</style>
+</head>
+<body>
+	<div class="tab">
+		<ul class="tab_title">
+			<li class="tab_adv">第一</li>
+			<li>第二</li>
+			<li>第三</li>
+		</ul>
+		<ul class="tab_content">
+			<div class="tab_on">第一部分</div>
+			<div>第二部分</div>
+			<div>第三部分</div>
+		</ul>
+	</div>
+</body>
+<script>
+	$(document).ready(function(){
+		$(".tab_title li").click(function() {
+			$(".tab_title li").eq($(this).index()).addClass('tab_adv').siblings().removeClass('tab_adv');
+			// $(".tab_title li").eq($(this).index()).css("borderBottom","none");
+			$(".tab_content div").eq($(".tab_title li").index(this)).addClass('tab_on').siblings().removeClass('tab_on');
+			//第二种方法： $(".tab_content div").hide().eq($(this).index()).show(); 
+		});
+	});
+</script>
+</html>
